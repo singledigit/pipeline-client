@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Base template to build serverless site with
+
+Resources:
+
+  DeployBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        ErrorDocument: error.html
+        IndexDocument: index.html
+
+Outputs:
+  DeployBucket:
+    Value: !Ref DeployBucket
+    Export:
+      Name: "Pipeline::DeployBucket"
+
+  WebsiteUrl:
+    Value: !GetAtt DeployBucket.WebsiteURL
+    Export:
+      Name: "Pipeline::WebsiteUrl"
