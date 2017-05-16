@@ -1,0 +1,16 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - echo "Global dependencies should be installed here"
+  pre_build:
+    commands:
+      - echo "Running pre-build commands"
+  build:
+    commands:
+      - echo "Running build commands"
+  post_build:
+    commands:
+      - echo "Running post-build commands"
+      - aws s3 sync ./src s3://$BUCKET --acl 'public-read'
