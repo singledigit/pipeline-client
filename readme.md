@@ -25,11 +25,11 @@
 	
 #### Creating the CICD pipeline
 	aws cloudformation update-stack \
+		--profile demo \
 		--stack-name pipeline-client-cicd \
        --template-url=https://s3.amazonaws.com/singledigit-demo-cft/cicd.yml \
        --capabilities=CAPABILITY_NAMED_IAM \
        --parameters ParameterKey=GitHubOwner,ParameterValue=singledigit \
        ParameterKey=Repo,ParameterValue=pipeline-client \
        ParameterKey=Branch,ParameterValue=master \
-       ParameterKey=Token,ParameterValue=5018b6d4af296ef887e65c3069c2cfb88b5923ae \
-       --profile demo
+       ParameterKey=Token,ParameterValue=
